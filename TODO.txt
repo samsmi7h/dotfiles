@@ -1,0 +1,2 @@
+- fish as default shell
+- gituser_local

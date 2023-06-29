@@ -1,0 +1,42 @@
+# This is Git's per-user configuration file.
+[user]
+	# set in ~/.gituser_local
+
+[include]
+	path = ~/.gituser_local
+
+[alias]
+	trim = !git dev && git branch --merged | grep -Ev '(master|development)' | xargs git branch -d
+	dev = checkout development
+	master = !git checkout $(git defaultbranch)
+	staging = checkout staging
+	current = rev-parse --abbrev-ref HEAD
+	publish = !git push -u origin $(git current)
+	nb = checkout -b
+	uncommit = reset --soft HEAD~1
+	defaultbranch = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+
+	# bash aliases
+	repolink = "!f() { \
+		printf 'https://' && git remote -v | head -n 1 | sed 's/.*git@//' | tr ':' '/' | sed 's/.git.*//'; \
+	}; f"
+
+	open = "!f () { \
+		open $(git repolink); \
+	}; f"
+
+	pr = "!f() { \
+		current_branch=$(git current);\
+		default_branch=$(git defaultbranch);\
+		diff_with=\"${1:-$default_branch}\";\
+		repo=$(git repolink); \
+		open $(printf $repo && \
+			printf '/compare/' && \
+			printf $diff_with && \
+			printf '...' && \
+			printf $current_branch && \
+			printf '?expand=1'); \
+	}; f"
+
+[url "ssh://git@gitlab.com/"]
+	insteadOf = https://gitlab.com/

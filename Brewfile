@@ -14,3 +14,6 @@ cask 'alacritty'
 # tools
 brew 'fd'
 brew 'bat'
+brew 'fzf'
+brew 'ripgrep'
+
