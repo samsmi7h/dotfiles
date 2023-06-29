@@ -8,6 +8,7 @@ tap 'caskroom/versions' || true
 brew 'git'
 brew 'nvim'
 brew 'go'
+cask 'alacritty'
 
 # tools
 brew 'fd'
