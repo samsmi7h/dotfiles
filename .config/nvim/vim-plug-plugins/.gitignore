@@ -1,0 +1,7 @@
+# Don't version control any plugins
+# as they should be re-installed on first load
+# BUT don't ignore the gitignore
+
+/*/
+
+!.gitignore

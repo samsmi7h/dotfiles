@@ -1,0 +1,12 @@
+## Contents of this Dir
+nvim settings
+
+- `init.vim`: main config
+- `settings/`
+	- `go.vim`: some additional Go settings. `init.vim` loads this
+- `coc-settings.json`: language server settings
+- `autoload`, `vim-plug-plugins`: things will install here
+
+## Setup
+- Open `nvim`
+- `:PlugInstall`
