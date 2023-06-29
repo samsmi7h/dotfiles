@@ -8,3 +8,7 @@ tap 'caskroom/versions' || true
 brew 'git'
 brew 'nvim'
 brew 'go'
+
+# tools
+brew 'fd'
+brew 'bat'
