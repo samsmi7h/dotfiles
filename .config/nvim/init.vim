@@ -112,6 +112,8 @@ map gp :bp<cr>
 " gw to close buffer
 map gw :bd<cr>
 
+" gk o close all but the current buffer
+map gk :%bd\|e#\|bd#<cr>
 
 "--------------------------------------------------
 " case insensitive search
