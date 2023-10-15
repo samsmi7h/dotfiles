@@ -9,6 +9,9 @@
 [includeIf "hasconfig:remote.*.url:git@github.com:samsmi7h/**"]
 	path = ~/.config/git/gitconfig_personal
 
+[includeIf "hasconfig:remote.*.url:git@github.com-personal:samsmi7h/**"]
+	path = ~/.config/git/gitconfig_personal
+
 [alias]
 	trim = !git dev && git branch --merged | grep -Ev '(master|development)' | xargs git branch -d
 	dev = checkout development
