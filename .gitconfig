@@ -1,9 +1,13 @@
 # This is Git's per-user configuration file.
 [user]
-	# set in ~/.gituser_local
+	# set in ~/.gituser_*
 
-[include]
-	path = ~/.gituser_local
+[includeIf "hasconfig:remote.*.url:git@github.com:deliveroo/**"]
+	path = ~/.config/git/gitconfig_work
+
+
+[includeIf "hasconfig:remote.*.url:git@github.com:samsmi7h/**"]
+	path = ~/.config/git/gitconfig_personal
 
 [alias]
 	trim = !git dev && git branch --merged | grep -Ev '(master|development)' | xargs git branch -d
