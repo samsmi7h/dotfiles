@@ -50,7 +50,7 @@ let g:netrw_liststyle = 3
 "---------------------------------------------------
 """ Go Setting
 Plug 'fatih/vim-go'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile', 'branch': 'release'}
 source ~/.config/nvim/settings/go.vim
 
 "---------------------------------------------------
@@ -75,6 +75,14 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 
+"---------------------------------------------------
+" vim -> github
+" :ToGithub
+Plug 'tonchis/vim-to-github'
+
+" --------------------------------------------------
+" Markdown Preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " --------------------------------------------------
 
@@ -112,8 +120,9 @@ map gp :bp<cr>
 " gw to close buffer
 map gw :bd<cr>
 
-" gk o close all but the current buffer
+" gk to close all buffers but current one
 map gk :%bd\|e#\|bd#<cr>
+
 
 "--------------------------------------------------
 " case insensitive search
@@ -140,7 +149,9 @@ colorscheme github_dark
  autocmd ColorScheme * highlight CocWarningFloat guifg=#ffffff
  autocmd ColorScheme * highlight SignColumn guibg=#adadad
 
-
+" --------------
+" Create a new file in the current directory
+nnoremap <C-n> :e %:h/
 
 "---------------------------------------------------
 " Debugger settings
@@ -156,3 +167,18 @@ map <C-b><C-b> :GoDebugBreakpoint<cr>
 map <C-b><C-t> :GoDebugTestFunc<cr>
 map <C-b><C-g> :GoDebugContinue<cr>
 map <C-b><C-s> :GoDebugStop<cr>
+
+"
+" ----
+"  Copying to Mac clipboard
+"  - The key commands should map to their in-vim equivalent
+
+" Copy text under highlight
+vnoremap  <leader>y "*y
+
+" Copy to end of line
+nnoremap  <leader>Y "*yg_
+
+" Copy whole line
+nnoremap  <leader>yy "+yy
+
