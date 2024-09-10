@@ -21,7 +21,13 @@
 	publish = !git push -u origin $(git current)
 	nb = checkout -b
 	uncommit = reset --soft HEAD~1
-	defaultbranch = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+	defaultbranch = !git remote show origin | sed -n '/HEAD branch/s/.*: //p'
+
+	# staging-pull-merge
+	spm = !git staging && git pull && git merge -
+
+	# rebase on main
+	rbm = !git master && git pull && git checkout - && git rebase -
 
 	# bash aliases
 	repolink = "!f() { \
@@ -47,3 +53,6 @@
 
 [url "ssh://git@gitlab.com/"]
 	insteadOf = https://gitlab.com/
+
+[core]
+	hooksPath = .nohooks
