@@ -132,22 +132,7 @@ set ignorecase
 
 Plug 'hashivim/vim-terraform'
 
-" -------------------------------------------------
 
-" """" VIM PLUG: END
-call plug#end()
-
-"---------------------------------------------------
-" set theme
-" colorscheme github_*
-" https://github.com/projekt0n/github-nvim-theme
-
-colorscheme github_dark
-
- autocmd ColorScheme * highlight CocErrorFloat guifg=#ffffff
- autocmd ColorScheme * highlight CocInfoFloat guifg=#ffffff
- autocmd ColorScheme * highlight CocWarningFloat guifg=#ffffff
- autocmd ColorScheme * highlight SignColumn guibg=#adadad
 
 " --------------
 " Create a new file in the current directory
@@ -182,3 +167,57 @@ nnoremap  <leader>Y "*yg_
 " Copy whole line
 nnoremap  <leader>yy "+yy
 
+"
+" -------
+"  Vim wiki
+Plug 'vimwiki/vimwiki'
+
+let g:vimwiki_list = [
+    \ {'path': '/Users/sam/projects/vimwiki', 
+    \  'diary_frequency': 'weekly',
+    \  'diary_start_week_monday': 1}
+    \]
+
+"" Tab for autocomplete, as Vimwiki conflicts with this
+au filetype vimwiki silent! iunmap <buffer> <Tab>
+
+" -------------------------------------------------
+
+" """" VIM PLUG: END
+call plug#end()
+
+"---------------------------------------------------
+" MUST GO AFTER Vim Plug End
+" set theme
+" colorscheme github_*
+" https://github.com/projekt0n/github-nvim-theme
+
+colorscheme github_dark
+
+ autocmd ColorScheme * highlight CocErrorFloat guifg=#ffffff
+ autocmd ColorScheme * highlight CocInfoFloat guifg=#ffffff
+ autocmd ColorScheme * highlight CocWarningFloat guifg=#ffffff
+ autocmd ColorScheme * highlight SignColumn guibg=#adadad
+
+
+"
+" ----------
+"  Add my lua scripts
+"
+
+lua << EOF
+function PrintGolangVar()
+    local word = vim.fn.expand("<cword>")
+    vim.api.nvim_put({string.format('fmt.Println("%s: ", %s)', word, word)}, 'l', true, true)
+end
+
+
+-- This prints the Variable under cursoer, in go files
+-- using leader p
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'go',
+    callback = function()
+        vim.api.nvim_buf_set_keymap(0, 'n', '<leader>p', ':lua PrintGolangVar()<CR>', { noremap = true, silent = true })
+    end,
+})
+EOF
