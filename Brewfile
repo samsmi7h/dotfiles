@@ -18,6 +18,8 @@ brew 'bat'
 brew 'fzf'
 brew 'ripgrep'
 brew 'node'
-
 cask 'karabiner-elements'
+
+# applications
+cask 'obsidian'
 
