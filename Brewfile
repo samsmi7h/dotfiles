@@ -10,10 +10,14 @@ brew 'nvim'
 brew 'go'
 brew 'tmux'
 cask 'alacritty'
+brew 'fish'
 
 # tools
 brew 'fd'
 brew 'bat'
 brew 'fzf'
 brew 'ripgrep'
+brew 'node'
+
+cask 'karabiner-elements'
 
