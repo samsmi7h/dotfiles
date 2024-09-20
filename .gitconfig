@@ -1,5 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
+	name = samsmi7h
+	email = 131374083+samsmi7h@users.noreply.github.com
 	# set in ~/.gituser_*
 
 [includeIf "hasconfig:remote.*.url:git@github.com:deliveroo/**"]
@@ -31,7 +33,7 @@
 
 	# bash aliases
 	repolink = "!f() { \
-		printf 'https://' && git remote -v | head -n 1 | sed 's/.*git@//' | tr ':' '/' | sed 's/.git.*//'; \
+		printf 'https://' && git remote -v | grep origin | head -n 1 | sed 's/.*git@//' | tr ':' '/' | sed 's/.git.*//'; \
 	}; f"
 
 	open = "!f () { \
