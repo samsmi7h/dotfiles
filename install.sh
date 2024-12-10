@@ -15,6 +15,9 @@ ln -s $(pwd)/.tmux.conf ~/
 # symlink karabiner
 ln -s $(pwd)/karabiner.json ~/.config/karabiner/karabiner.json
 
+# symlink espanso config
+ln -s $(pwd)/espanso/base.yml ~/Library/Application\ Support/espanso/match/base.yml
+
 ###
 # Fish Shell
 ###

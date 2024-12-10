@@ -1,0 +1,66 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%Y-%m-%d"
+  - trigger: ":time"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: date
+        params:
+          format: "%H:%M:%S"
+  - trigger: ":stagingid"
+    replace: "6394278"
+  - trigger: ":prodid"
+    replace: "44318094"
+  - trigger: ":meet"
+    replace: "g.co/meet/X"
+  - trigger: ":getres"
+    replace: "Number(dataLayer.find(d => d.event == 'MenuPageViewed').restaurant_id)"
+  - trigger: ":uuid"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "uuidgen"
+  - trigger: ":matter"
+    # Email address for my matter inbox for newsletters
+    replace: "o6gnxqodg9@subs.getmatter.com"
+  - trigger: ":iferr"
+    replace: "if err != nil {\n\treturn fmt.Errorf(\"$|$: %w\", err)\n}"
+  - trigger: ":acs"
+    replace: "Acceptance Criteria"
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+  - trigger: ":saml"
+    replace: "gsts --idp-id C01jnk96c --sp-id 461132902683 --aws-profile saml --force"
+  - trigger: ":cht"
+    replace: "https://deliveroo.atlassian.net/browse/CHT-3925"
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/

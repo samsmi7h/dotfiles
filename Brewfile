@@ -23,4 +23,6 @@ cask 'karabiner-elements'
 # applications
 cask 'obsidian'
 cask 'rectangle'
+cask 'espanso'
+
 
